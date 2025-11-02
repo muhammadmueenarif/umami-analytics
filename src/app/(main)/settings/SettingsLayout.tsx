@@ -14,6 +14,11 @@ export default function SettingsLayout({ children }: { children: ReactNode }) {
       url: '/settings/websites',
     },
     { key: 'teams', label: formatMessage(labels.teams), url: '/settings/teams' },
+    {
+      key: 'appearance',
+      label: 'Appearance',
+      url: '/settings/appearance',
+    },
     user.isAdmin && {
       key: 'users',
       label: formatMessage(labels.users),

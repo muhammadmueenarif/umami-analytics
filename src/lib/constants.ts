@@ -4,6 +4,7 @@ export const LOCALE_CONFIG = 'umami.locale';
 export const TIMEZONE_CONFIG = 'umami.timezone';
 export const DATE_RANGE_CONFIG = 'umami.date-range';
 export const THEME_CONFIG = 'umami.theme';
+export const COLOR_PALETTE_CONFIG = 'umami.color-palette';
 export const DASHBOARD_CONFIG = 'umami.dashboard';
 export const VERSION_CHECK = 'umami.version-check';
 export const SHARE_TOKEN_HEADER = 'x-umami-share-token';
@@ -252,6 +253,57 @@ export const CHART_COLORS = [
   '#ec1562',
   '#ffec16',
 ];
+
+export const COLOR_PALETTES = {
+  blue: {
+    name: 'Blue',
+    primary: '#2680eb',
+    secondary: '#1e6bc7',
+    accent: '#1a5ba3',
+  },
+  green: {
+    name: 'Green',
+    primary: '#44b556',
+    secondary: '#369944',
+    accent: '#2d7d38',
+  },
+  purple: {
+    name: 'Purple',
+    primary: '#9256d9',
+    secondary: '#7a47b8',
+    accent: '#633897',
+  },
+  orange: {
+    name: 'Orange',
+    primary: '#e68619',
+    secondary: '#c27015',
+    accent: '#9f5a11',
+  },
+  red: {
+    name: 'Red',
+    primary: '#e34850',
+    secondary: '#c43a41',
+    accent: '#a52f35',
+  },
+  pink: {
+    name: 'Pink',
+    primary: '#ec1562',
+    secondary: '#c91251',
+    accent: '#a50f42',
+  },
+  teal: {
+    name: 'Teal',
+    primary: '#01bad7',
+    secondary: '#0198b0',
+    accent: '#017689',
+  },
+  indigo: {
+    name: 'Indigo',
+    primary: '#6734bc',
+    secondary: '#552b9a',
+    accent: '#432278',
+  },
+};
 
 export const DOMAIN_REGEX =
   /^(localhost(:[1-9]\d{0,4})?|((?=[a-z0-9-_]{1,63}\.)(xn--)?[a-z0-9-_]+(-[a-z0-9-_]+)*\.)+(xn--)?[a-z0-9-_]{2,63})$/;

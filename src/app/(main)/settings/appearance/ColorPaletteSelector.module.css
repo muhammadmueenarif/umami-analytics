@@ -1,0 +1,118 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--font-color900);
+}
+
+.sectionDescription {
+  font-size: 14px;
+  color: var(--font-color600);
+  margin: 0;
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.presetButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--base50);
+  border: 2px solid var(--base300);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.presetButton:hover {
+  border-color: var(--base500);
+  background: var(--base75);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.presetButtonActive {
+  border-color: var(--primary500);
+  background: var(--base75);
+  box-shadow: 0 0 0 3px rgba(var(--primary500-rgb, 38, 128, 235), 0.1);
+}
+
+.colorCircles {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.colorCircle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.presetLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--font-color700);
+}
+
+.presetButtonActive .presetLabel {
+  color: var(--primary500);
+  font-weight: 600;
+}
+
+.checkIcon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: var(--primary500);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  background: var(--base50);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--base300);
+}
+
+.savedMessage {
+  font-size: 14px;
+  color: var(--green700);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+

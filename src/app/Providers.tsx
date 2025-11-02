@@ -3,6 +3,7 @@ import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactBasicsProvider } from 'react-basics';
 import ErrorBoundary from '@/components/common/ErrorBoundary';
+import ColorPaletteInitializer from '@/components/common/ColorPaletteInitializer';
 import { useLocale } from '@/components/hooks';
 import 'chartjs-adapter-date-fns';
 import { useEffect } from 'react';
@@ -36,6 +37,7 @@ export function Providers({ children }) {
     <MessagesProvider>
       <QueryClientProvider client={client}>
         <ReactBasicsProvider>
+          <ColorPaletteInitializer />
           <ErrorBoundary>{children}</ErrorBoundary>
         </ReactBasicsProvider>
       </QueryClientProvider>

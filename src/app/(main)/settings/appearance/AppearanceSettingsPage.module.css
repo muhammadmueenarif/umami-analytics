@@ -1,0 +1,26 @@
+.container {
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.card {
+  background: var(--base50);
+  border: 1px solid var(--base300);
+  border-radius: 8px;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--font-color900);
+}
+
+.description {
+  font-size: 14px;
+  color: var(--font-color600);
+  margin: 0 0 30px 0;
+}
+

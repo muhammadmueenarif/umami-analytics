@@ -45,4 +45,5 @@ export * from './useRegionNames';
 export * from './useSticky';
 export * from './useTeamUrl';
 export * from './useTheme';
+export * from './useColorPalette';
 export * from './useTimezone';
