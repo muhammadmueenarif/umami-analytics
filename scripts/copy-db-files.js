@@ -11,13 +11,18 @@ function getDatabaseType(url = process.env.DATABASE_URL) {
     return 'postgresql';
   }
 
+  // Default to postgresql if not specified (common default for Docker builds)
+  if (!type) {
+    return 'postgresql';
+  }
+
   return type;
 }
 
 const databaseType = getDatabaseType();
 
 if (!databaseType || !['mysql', 'postgresql'].includes(databaseType)) {
-  throw new Error('Missing or invalid database');
+  throw new Error(`Missing or invalid database. Got: ${databaseType}. Expected: mysql or postgresql`);
 }
 
 console.log(`Database type detected: ${databaseType}`);
