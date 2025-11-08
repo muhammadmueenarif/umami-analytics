@@ -1,12 +1,12 @@
 .filters {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: var(--base75);
-  padding: 10px 20px;
-  border: 1px solid var(--base400);
+  padding: 8px 16px;
+  border: 1px solid var(--base300);
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 

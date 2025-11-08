@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
-import { Text, Icon, Icons, GridTable, GridColumn } from 'react-basics';
+import { Edit, ArrowRight } from 'lucide-react';
 import { useMessages, useTeamUrl } from '@/components/hooks';
-import LinkButton from '@/components/common/LinkButton';
+import Link from 'next/link';
+import styles from './WebsitesTable.module.css';
 
 export interface WebsitesTableProps {
   data: any[];
@@ -27,38 +28,44 @@ export function WebsitesTable({
   }
 
   return (
-    <GridTable data={data}>
-      <GridColumn name="name" label={formatMessage(labels.name)} />
-      <GridColumn name="domain" label={formatMessage(labels.domain)} />
-      {showActions && (
-        <GridColumn name="action" label=" " alignment="end">
-          {row => {
-            const { id: websiteId } = row;
-
-            return (
-              <>
-                {allowEdit && (
-                  <LinkButton href={renderTeamUrl(`/settings/websites/${websiteId}`)}>
-                    <Icon data-test="link-button-edit">
-                      <Icons.Edit />
-                    </Icon>
-                    <Text>{formatMessage(labels.edit)}</Text>
-                  </LinkButton>
-                )}
-                {allowView && (
-                  <LinkButton href={renderTeamUrl(`/websites/${websiteId}`)}>
-                    <Icon>
-                      <Icons.ArrowRight />
-                    </Icon>
-                    <Text>{formatMessage(labels.view)}</Text>
-                  </LinkButton>
-                )}
-              </>
-            );
-          }}
-        </GridColumn>
-      )}
-    </GridTable>
+    <div className={styles.listContainer}>
+      {data.map((row) => {
+        const { id: websiteId, name, domain } = row;
+        return (
+          <div key={websiteId} className={styles.listItem}>
+            <div className={styles.itemContent}>
+              <div className={styles.itemInfo}>
+                <div className={styles.itemName}>{name || '-'}</div>
+                <div className={styles.itemDomain}>{domain || '-'}</div>
+              </div>
+              {showActions && (
+                <div className={styles.itemActions}>
+                  {allowEdit && (
+                    <Link
+                      href={renderTeamUrl(`/settings/websites/${websiteId}`)}
+                      className={styles.actionButton}
+                      data-test="link-button-edit"
+                    >
+                      <Edit size={16} />
+                      <span>{formatMessage(labels.edit)}</span>
+                    </Link>
+                  )}
+                  {allowView && (
+                    <Link
+                      href={renderTeamUrl(`/websites/${websiteId}`)}
+                      className={styles.actionButton}
+                    >
+                      <ArrowRight size={16} />
+                      <span>{formatMessage(labels.view)}</span>
+                    </Link>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 

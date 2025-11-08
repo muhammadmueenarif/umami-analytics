@@ -1,0 +1,42 @@
+.dashboard {
+  padding: 24px;
+  max-width: none;
+  margin: 0;
+  width: 100%;
+}
+
+.chartsSection {
+  margin-top: 32px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--font-color100);
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 768px) {
+  .dashboard {
+    padding: 20px 16px;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+  }
+}
+

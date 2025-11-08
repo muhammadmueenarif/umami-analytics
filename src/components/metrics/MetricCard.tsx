@@ -15,6 +15,7 @@ export interface MetricCardProps {
   showChange?: boolean;
   showPrevious?: boolean;
   className?: string;
+  icon?: React.ReactNode;
 }
 
 export const MetricCard = ({
@@ -27,6 +28,7 @@ export const MetricCard = ({
   showChange = false,
   showPrevious = false,
   className,
+  icon,
 }: MetricCardProps) => {
   const diff = value - change;
   const pct = ((value - diff) / diff) * 100;
@@ -36,25 +38,30 @@ export const MetricCard = ({
 
   return (
     <div className={classNames(styles.card, className, showPrevious && styles.compare)}>
-      {showLabel && <div className={styles.label}>{label}</div>}
-      <animated.div className={styles.value} title={value?.toString()}>
-        {props?.x?.to(x => formatValue(x))}
-      </animated.div>
-      {showChange && (
-        <ChangeLabel
-          className={styles.change}
-          value={change}
-          title={formatValue(change)}
-          reverseColors={reverseColors}
-        >
-          <animated.span>{changeProps?.x?.to(x => `${Math.abs(~~x)}%`)}</animated.span>
-        </ChangeLabel>
-      )}
-      {showPrevious && (
-        <animated.div className={classNames(styles.value, styles.prev)} title={diff.toString()}>
-          {prevProps?.x?.to(x => formatValue(x))}
+      <div className={styles.cardHeader}>
+        {icon && <div className={styles.icon}>{icon}</div>}
+        {showLabel && <div className={styles.label}>{label}</div>}
+      </div>
+      <div className={styles.cardBody}>
+        <animated.div className={styles.value} title={value?.toString()}>
+          {props?.x?.to(x => formatValue(x))}
         </animated.div>
-      )}
+        {showChange && (
+          <ChangeLabel
+            className={styles.change}
+            value={change}
+            title={formatValue(change)}
+            reverseColors={reverseColors}
+          >
+            <animated.span>{changeProps?.x?.to(x => `${Math.abs(~~x)}%`)}</animated.span>
+          </ChangeLabel>
+        )}
+        {showPrevious && (
+          <animated.div className={classNames(styles.value, styles.prev)} title={diff.toString()}>
+            {prevProps?.x?.to(x => formatValue(x))}
+          </animated.div>
+        )}
+      </div>
     </div>
   );
 };

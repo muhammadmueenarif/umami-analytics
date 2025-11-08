@@ -1,6 +1,6 @@
 import { useMessages } from '@/components/hooks';
-import PageHeader from '@/components/layout/PageHeader';
 import WebsiteAddButton from './WebsiteAddButton';
+import styles from './WebsitesHeader.module.css';
 
 export interface WebsitesHeaderProps {
   teamId?: string;
@@ -11,9 +11,10 @@ export function WebsitesHeader({ teamId, allowCreate = true }: WebsitesHeaderPro
   const { formatMessage, labels } = useMessages();
 
   return (
-    <PageHeader title={formatMessage(labels.websites)}>
+    <div className={styles.header}>
+      <h1 className={styles.title}>{formatMessage(labels.websites)}</h1>
       {allowCreate && <WebsiteAddButton teamId={teamId} />}
-    </PageHeader>
+    </div>
   );
 }
 

@@ -1,8 +1,10 @@
+import { Plus } from 'lucide-react';
 import { useMessages, useModified } from '@/components/hooks';
-import { Button, Icon, Icons, Modal, ModalTrigger, Text, useToasts } from 'react-basics';
+import { Button, Modal, ModalTrigger, Text, useToasts } from 'react-basics';
 import WebsiteAddForm from './WebsiteAddForm';
+import styles from './WebsiteAddButton.module.css';
 
-export function WebsiteAddButton({ teamId, onSave }: { teamId: string; onSave?: () => void }) {
+export function WebsiteAddButton({ teamId, onSave }: { teamId?: string; onSave?: () => void }) {
   const { formatMessage, labels, messages } = useMessages();
   const { showToast } = useToasts();
   const { touch } = useModified();
@@ -15,10 +17,8 @@ export function WebsiteAddButton({ teamId, onSave }: { teamId: string; onSave?: 
 
   return (
     <ModalTrigger>
-      <Button data-test="button-website-add" variant="primary">
-        <Icon>
-          <Icons.Plus />
-        </Icon>
+      <Button data-test="button-website-add" variant="primary" className={styles.addButton}>
+        <Plus size={18} />
         <Text>{formatMessage(labels.addWebsite)}</Text>
       </Button>
       <Modal title={formatMessage(labels.addWebsite)}>

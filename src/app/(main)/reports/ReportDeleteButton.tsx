@@ -1,6 +1,8 @@
-import { Button, Icon, Icons, Modal, ModalTrigger, Text } from 'react-basics';
+import { Trash2 } from 'lucide-react';
+import { Button, Modal, ModalTrigger, Text } from 'react-basics';
 import { useApi, useMessages, useModified } from '@/components/hooks';
 import ConfirmationForm from '@/components/common/ConfirmationForm';
+import styles from './ReportDeleteButton.module.css';
 
 export function ReportDeleteButton({
   reportId,
@@ -30,10 +32,8 @@ export function ReportDeleteButton({
 
   return (
     <ModalTrigger>
-      <Button>
-        <Icon>
-          <Icons.Trash />
-        </Icon>
+      <Button variant="secondary" className={styles.deleteButton}>
+        <Trash2 size={16} />
         <Text>{formatMessage(labels.delete)}</Text>
       </Button>
       <Modal title={formatMessage(labels.deleteReport)}>

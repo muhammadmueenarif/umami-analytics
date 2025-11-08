@@ -9,6 +9,7 @@ import useWebsiteStats from '@/components/hooks/queries/useWebsiteStats';
 import useStore, { setWebsiteDateCompare } from '@/store/websites';
 import WebsiteFilterButton from './WebsiteFilterButton';
 import { ExportButton } from '@/components/input/ExportButton';
+import { Eye, Users, BarChart3, TrendingUp, Clock } from 'lucide-react';
 import styles from './WebsiteMetricsBar.module.css';
 
 export function WebsiteMetricsBar({
@@ -46,18 +47,21 @@ export function WebsiteMetricsBar({
           label: formatMessage(labels.views),
           change: pageviews.value - pageviews.prev,
           formatValue: formatLongNumber,
+          icon: <Eye size={20} />,
         },
         {
           ...visits,
           label: formatMessage(labels.visits),
           change: visits.value - visits.prev,
           formatValue: formatLongNumber,
+          icon: <BarChart3 size={20} />,
         },
         {
           ...visitors,
           label: formatMessage(labels.visitors),
           change: visitors.value - visitors.prev,
           formatValue: formatLongNumber,
+          icon: <Users size={20} />,
         },
         {
           label: formatMessage(labels.bounceRate),
@@ -68,6 +72,7 @@ export function WebsiteMetricsBar({
             (Math.min(visits.prev, bounces.prev) / visits.prev) * 100,
           formatValue: n => Math.round(+n) + '%',
           reverseColors: true,
+          icon: <TrendingUp size={20} />,
         },
         {
           label: formatMessage(labels.visitDuration),
@@ -76,6 +81,7 @@ export function WebsiteMetricsBar({
           change: totaltime.value / visits.value - totaltime.prev / visits.prev,
           formatValue: n =>
             `${+n < 0 ? '-' : ''}${formatShortTime(Math.abs(~~n), ['m', 's'], ' ')}`,
+          icon: <Clock size={20} />,
         },
       ]
     : [];
@@ -95,7 +101,7 @@ export function WebsiteMetricsBar({
     >
       <div>
         <MetricsBar isLoading={isLoading} isFetched={isFetched} error={error}>
-          {metrics.map(({ label, value, prev, change, formatValue, reverseColors }) => {
+          {metrics.map(({ label, value, prev, change, formatValue, reverseColors, icon }) => {
             return (
               <MetricCard
                 key={label}
@@ -107,6 +113,7 @@ export function WebsiteMetricsBar({
                 reverseColors={reverseColors}
                 showChange={!isAllTime && (compareMode || showChange)}
                 showPrevious={!isAllTime && compareMode}
+                icon={icon}
               />
             );
           })}

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import PageviewsChart from '@/components/metrics/PageviewsChart';
 import useWebsitePageviews from '@/components/hooks/queries/useWebsitePageviews';
 import { useDateRange } from '@/components/hooks';
+import styles from './WebsiteChart.module.css';
 
 export function WebsiteChart({
   websiteId,
@@ -43,14 +44,16 @@ export function WebsiteChart({
   }, [data, startDate, endDate, unit]);
 
   return (
-    <PageviewsChart
-      data={chartData}
-      minDate={startDate.toISOString()}
-      maxDate={endDate.toISOString()}
-      unit={unit}
-      isLoading={isLoading}
-      isAllTime={value === 'all'}
-    />
+    <div className={styles.chartWrapper}>
+      <PageviewsChart
+        data={chartData}
+        minDate={startDate.toISOString()}
+        maxDate={endDate.toISOString()}
+        unit={unit}
+        isLoading={isLoading}
+        isAllTime={value === 'all'}
+      />
+    </div>
   );
 }
 

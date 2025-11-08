@@ -1,7 +1,26 @@
 .chart {
   position: relative;
-  height: 400px;
+  height: 320px;
   overflow: hidden;
+  background: var(--base75);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #d0d0d0;
+  transition: all 0.2s ease;
+}
+
+.chart:hover {
+  border-color: var(--primary400);
+}
+
+/* Dark Theme */
+[data-theme='dark'] .chart {
+  background: var(--base100);
+  border-color: #555555;
+}
+
+[data-theme='dark'] .chart:hover {
+  border-color: var(--primary400);
 }
 
 .tooltip {

@@ -2,6 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  background: var(--base50);
+  padding: 20px;
+}
+
+/* Dark Theme */
+[data-theme='dark'] .page {
   background: var(--base75);
 }

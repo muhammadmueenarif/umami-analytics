@@ -8,6 +8,7 @@ import WebsiteHeader from './WebsiteHeader';
 import WebsiteMetricsBar from './WebsiteMetricsBar';
 import WebsiteTableView from './WebsiteTableView';
 import { FILTER_COLUMNS, FILTER_GROUPS } from '@/lib/constants';
+import styles from './WebsiteDetailsPage.module.css';
 
 export default function WebsiteDetailsPage({ websiteId }: { websiteId: string }) {
   const pathname = usePathname();
@@ -24,13 +25,15 @@ export default function WebsiteDetailsPage({ websiteId }: { websiteId: string })
   }, {});
 
   return (
-    <>
+    <div className={styles.page}>
       <WebsiteHeader websiteId={websiteId} showLinks={showLinks} />
-      <FilterTags websiteId={websiteId} params={params} />
-      <WebsiteMetricsBar websiteId={websiteId} showFilter={true} showChange={true} sticky={true} />
-      <WebsiteChart websiteId={websiteId} />
-      {!view && <WebsiteTableView websiteId={websiteId} />}
-      {view && <WebsiteExpandedView websiteId={websiteId} />}
-    </>
+      <div className={styles.content}>
+        <FilterTags websiteId={websiteId} params={params} />
+        <WebsiteMetricsBar websiteId={websiteId} showFilter={true} showChange={true} sticky={false} />
+        <WebsiteChart websiteId={websiteId} />
+        {!view && <WebsiteTableView websiteId={websiteId} />}
+        {view && <WebsiteExpandedView websiteId={websiteId} />}
+      </div>
+    </div>
   );
 }

@@ -1,0 +1,142 @@
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.listItem {
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.listItem:hover {
+  border-color: #999;
+}
+
+.itemContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  gap: 16px;
+}
+
+.itemMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.itemName {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.itemDescription {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.5;
+}
+
+.itemMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.itemType {
+  font-weight: 500;
+}
+
+.itemSeparator {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.itemDomain {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.itemActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.viewButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.viewButton:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: #999;
+}
+
+.empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Dark Theme */
+[data-theme='dark'] .listItem {
+  border-color: #555555;
+}
+
+[data-theme='dark'] .listItem:hover {
+  border-color: #888;
+}
+
+[data-theme='dark'] .itemName {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+[data-theme='dark'] .itemDescription {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme='dark'] .itemMeta {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme='dark'] .itemSeparator {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme='dark'] .itemDomain {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme='dark'] .viewButton {
+  border-color: #555555;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+[data-theme='dark'] .viewButton:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #888;
+}
+
+[data-theme='dark'] .empty {
+  color: rgba(255, 255, 255, 0.6);
+}
+

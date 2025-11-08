@@ -1,15 +1,8 @@
-import Funnel from '@/assets/funnel.svg';
-import Money from '@/assets/money.svg';
-import Lightbulb from '@/assets/lightbulb.svg';
-import Magnet from '@/assets/magnet.svg';
-import Path from '@/assets/path.svg';
-import Tag from '@/assets/tag.svg';
-import Target from '@/assets/target.svg';
-import Network from '@/assets/network.svg';
+import { Lightbulb, Funnel, Link2, Tag, Target, Infinity, Coins, Sparkles, Plus } from 'lucide-react';
 import { useMessages, useTeamUrl } from '@/components/hooks';
 import PageHeader from '@/components/layout/PageHeader';
 import Link from 'next/link';
-import { Button, Icon, Icons, Text } from 'react-basics';
+import { Button, Text } from 'react-basics';
 import styles from './ReportTemplates.module.css';
 
 export function ReportTemplates({ showHeader = true }: { showHeader?: boolean }) {
@@ -21,49 +14,49 @@ export function ReportTemplates({ showHeader = true }: { showHeader?: boolean })
       title: formatMessage(labels.insights),
       description: formatMessage(labels.insightsDescription),
       url: renderTeamUrl('/reports/insights'),
-      icon: <Lightbulb />,
+      icon: <Lightbulb size={24} />,
     },
     {
       title: formatMessage(labels.funnel),
       description: formatMessage(labels.funnelDescription),
       url: renderTeamUrl('/reports/funnel'),
-      icon: <Funnel />,
+      icon: <Funnel size={24} />,
     },
     {
       title: formatMessage(labels.retention),
       description: formatMessage(labels.retentionDescription),
       url: renderTeamUrl('/reports/retention'),
-      icon: <Magnet />,
+      icon: <Link2 size={24} />,
     },
     {
       title: formatMessage(labels.utm),
       description: formatMessage(labels.utmDescription),
       url: renderTeamUrl('/reports/utm'),
-      icon: <Tag />,
+      icon: <Tag size={24} />,
     },
     {
       title: formatMessage(labels.goals),
       description: formatMessage(labels.goalsDescription),
       url: renderTeamUrl('/reports/goals'),
-      icon: <Target />,
+      icon: <Target size={24} />,
     },
     {
       title: formatMessage(labels.journey),
       description: formatMessage(labels.journeyDescription),
       url: renderTeamUrl('/reports/journey'),
-      icon: <Path />,
+      icon: <Infinity size={24} />,
     },
     {
       title: formatMessage(labels.revenue),
       description: formatMessage(labels.revenueDescription),
       url: renderTeamUrl('/reports/revenue'),
-      icon: <Money />,
+      icon: <Coins size={24} />,
     },
     {
       title: formatMessage(labels.attribution),
       description: formatMessage(labels.attributionDescription),
       url: renderTeamUrl('/reports/attribution'),
-      icon: <Network />,
+      icon: <Sparkles size={24} />,
     },
   ];
 
@@ -87,16 +80,14 @@ function ReportItem({ title, description, url, icon }) {
   return (
     <div className={styles.report}>
       <div className={styles.title}>
-        <Icon size="lg">{icon}</Icon>
+        {icon}
         <Text>{title}</Text>
       </div>
       <div className={styles.description}>{description}</div>
       <div className={styles.buttons}>
         <Link href={url}>
-          <Button variant="primary">
-            <Icon>
-              <Icons.Plus />
-            </Icon>
+          <Button variant="primary" className={styles.createButton}>
+            <Plus size={18} />
             <Text>{formatMessage(labels.create)}</Text>
           </Button>
         </Link>

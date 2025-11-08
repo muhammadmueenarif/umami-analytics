@@ -60,13 +60,16 @@ export function WebsiteHeader({
 
   return (
     <div className={styles.header}>
-      <div className={styles.title}>
-        <Favicon domain={domain} />
-        <Text>{name}</Text>
-        <ActiveUsers websiteId={websiteId} />
+      <div className={styles.headerTop}>
+        <div className={styles.title}>
+          <Favicon domain={domain} />
+          <Text>{name}</Text>
+          <ActiveUsers websiteId={websiteId} />
+        </div>
+        {children}
       </div>
-      <div className={styles.actions}>
-        {showLinks && (
+      {showLinks && (
+        <div className={styles.tabsContainer}>
           <div className={styles.links}>
             {links.map(({ label, icon, path }) => {
               const selected = path
@@ -78,10 +81,11 @@ export function WebsiteHeader({
                   key={label}
                   href={renderTeamUrl(`/websites/${websiteId}${path}`)}
                   shallow={true}
+                  className={styles.tabLink}
                 >
                   <Button
                     variant="quiet"
-                    className={classNames({
+                    className={classNames(styles.tabButton, {
                       [styles.selected]: selected,
                     })}
                   >
@@ -92,9 +96,8 @@ export function WebsiteHeader({
               );
             })}
           </div>
-        )}
-        {children}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

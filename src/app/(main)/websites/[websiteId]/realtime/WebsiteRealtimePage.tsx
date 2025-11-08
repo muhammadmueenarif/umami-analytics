@@ -11,6 +11,7 @@ import RealtimeUrls from './RealtimeUrls';
 import RealtimeCountries from './RealtimeCountries';
 import WebsiteHeader from '../WebsiteHeader';
 import { percentFilter } from '@/lib/filters';
+import styles from './WebsiteRealtimePage.module.css';
 
 export function WebsiteRealtimePage({ websiteId }: { websiteId: string }) {
   const { data, isLoading, error } = useRealtime(websiteId);
@@ -26,21 +27,23 @@ export function WebsiteRealtimePage({ websiteId }: { websiteId: string }) {
   );
 
   return (
-    <>
+    <div className={styles.page}>
       <WebsiteHeader websiteId={websiteId} />
-      <RealtimeHeader data={data} />
-      <RealtimeChart data={data} unit="minute" />
-      <Grid>
-        <GridRow columns="one-two">
-          <RealtimeUrls data={data} />
-          <RealtimeLog data={data} />
-        </GridRow>
-        <GridRow columns="one-two">
-          <RealtimeCountries data={countries} />
-          <WorldMap data={countries} />
-        </GridRow>
-      </Grid>
-    </>
+      <div className={styles.content}>
+        <RealtimeHeader data={data} />
+        <RealtimeChart data={data} unit="minute" />
+        <Grid>
+          <GridRow columns="one-two">
+            <RealtimeUrls data={data} />
+            <RealtimeLog data={data} />
+          </GridRow>
+          <GridRow columns="one-two">
+            <RealtimeCountries data={countries} />
+            <WorldMap data={countries} />
+          </GridRow>
+        </Grid>
+      </div>
+    </div>
   );
 }
 

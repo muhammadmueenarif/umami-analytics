@@ -1,27 +1,36 @@
 .container {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--base50);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: transparent;
   z-index: var(--z-index-above);
-  min-height: 120px;
-  padding-bottom: 20px;
+  padding: 16px 0;
+}
+
+.container > div:first-child {
+  width: 100%;
 }
 
 .actions {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   gap: 10px;
   flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.actions > div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .vs {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-basis: 100%;
   gap: 10px;
 }
 
@@ -30,23 +39,32 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-
   .actions {
-    margin: 20px 0;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 }
 
 @media screen and (min-width: 992px) {
   .sticky {
-    position: sticky;
-    top: -1px;
+    position: relative;
+    background: transparent;
+    padding: 16px 0;
+    margin: 0;
+    z-index: 1;
   }
 
   .isSticky {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--base300);
+    /* Removed sticky behavior */
   }
+}
+
+/* Dark Theme */
+[data-theme='dark'] .sticky {
+  background: var(--base75);
+}
+
+[data-theme='dark'] .isSticky {
+  border-bottom-color: var(--base200);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }

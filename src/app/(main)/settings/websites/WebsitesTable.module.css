@@ -1,0 +1,128 @@
+.listContainer {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.listItem {
+  background: var(--base75);
+  border-radius: 8px;
+  padding: 20px 24px;
+  transition: all 0.2s ease;
+  border: 1px solid #d0d0d0;
+}
+
+.listItem:hover {
+  border-color: var(--primary400);
+}
+
+.itemContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.itemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.itemName {
+  font-weight: 600;
+  color: var(--font-color100);
+  font-size: 16px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.itemDomain {
+  color: var(--font-color200);
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.itemActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--base300);
+  border-radius: 8px;
+  background: var(--base75);
+  color: var(--primary400);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.actionButton:hover {
+  background: var(--primary400);
+  color: white;
+  border-color: var(--primary400);
+}
+
+.actionButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Dark Theme */
+[data-theme='dark'] .listItem {
+  background: var(--base100);
+  border-color: #555555;
+}
+
+[data-theme='dark'] .listItem:hover {
+  border-color: var(--primary400);
+}
+
+[data-theme='dark'] .actionButton {
+  background: var(--base150);
+  border-color: #555555;
+  color: var(--primary400);
+}
+
+[data-theme='dark'] .actionButton:hover {
+  background: var(--primary400);
+  color: white;
+  border-color: var(--primary400);
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 768px) {
+  .itemContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .itemActions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .actionButton {
+    flex: 1;
+    justify-content: center;
+  }
+}
+

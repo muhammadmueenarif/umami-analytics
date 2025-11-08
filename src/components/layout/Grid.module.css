@@ -5,7 +5,13 @@
 .row {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  border-top: 1px solid var(--base300);
+  border-top: none;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.row:first-child {
+  margin-top: 0;
 }
 
 .row.compare {
@@ -14,17 +20,29 @@
 
 .col {
   padding: 20px;
-  min-height: 430px;
-  border-inline-start: 1px solid var(--base300);
+  min-height: 300px;
+  border: 1px solid #d0d0d0;
+  background: var(--base75);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 10;
+  overflow: visible;
 }
 
-.col:first-child {
-  border-inline-start: 0;
-  padding-inline-start: 0;
+.col:hover {
+  border-color: var(--primary400);
+  z-index: 20;
 }
 
-.col:last-child {
-  padding-inline-end: 0;
+/* Dark Theme */
+[data-theme='dark'] .col {
+  background: var(--base100);
+  border-color: #555555;
+}
+
+[data-theme='dark'] .col:hover {
+  border-color: var(--primary400);
 }
 
 .col.one {
@@ -55,6 +73,14 @@
   grid-column: span 4;
 }
 
+.col:first-child {
+  border-inline-start: 1px solid var(--base300);
+}
+
+.col:last-child {
+  border-inline-end: 1px solid var(--base300);
+}
+
 @media only screen and (max-width: 992px) {
   .row {
     border: 0;
@@ -64,7 +90,8 @@
     border-top: 1px solid var(--base300);
     border-inline-start: 0;
     border-inline-end: 0;
-    padding: 20px 0;
+    padding: 16px 0;
+    min-height: 250px;
   }
 
   .col.two,

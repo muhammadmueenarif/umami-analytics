@@ -1,0 +1,12 @@
+.reportsPage {
+  padding: 24px;
+  width: 100%;
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 768px) {
+  .reportsPage {
+    padding: 20px 16px;
+  }
+}
+

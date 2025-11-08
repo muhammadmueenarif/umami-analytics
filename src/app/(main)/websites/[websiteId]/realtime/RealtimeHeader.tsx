@@ -1,6 +1,8 @@
 import MetricCard from '@/components/metrics/MetricCard';
+import MetricsBar from '@/components/metrics/MetricsBar';
 import { useMessages } from '@/components/hooks';
 import { RealtimeData } from '@/lib/types';
+import { formatLongNumber } from '@/lib/format';
 import styles from './RealtimeHeader.module.css';
 
 export function RealtimeHeader({ data }: { data: RealtimeData }) {
@@ -9,28 +11,28 @@ export function RealtimeHeader({ data }: { data: RealtimeData }) {
 
   return (
     <div className={styles.header}>
-      <div className={styles.metrics}>
+      <MetricsBar isLoading={false} isFetched={true} error={null}>
         <MetricCard
-          className={styles.card}
           label={formatMessage(labels.views)}
-          value={totals.views}
+          value={totals?.views || 0}
+          formatValue={formatLongNumber}
         />
         <MetricCard
-          className={styles.card}
           label={formatMessage(labels.visitors)}
-          value={totals.visitors}
+          value={totals?.visitors || 0}
+          formatValue={formatLongNumber}
         />
         <MetricCard
-          className={styles.card}
           label={formatMessage(labels.events)}
-          value={totals.events}
+          value={totals?.events || 0}
+          formatValue={formatLongNumber}
         />
         <MetricCard
-          className={styles.card}
           label={formatMessage(labels.countries)}
-          value={totals.countries}
+          value={totals?.countries || 0}
+          formatValue={formatLongNumber}
         />
-      </div>
+      </MetricsBar>
     </div>
   );
 }

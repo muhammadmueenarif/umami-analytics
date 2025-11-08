@@ -1,0 +1,14 @@
+.websitesPage {
+  padding: 24px;
+  max-width: none;
+  margin: 0;
+  width: 100%;
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 768px) {
+  .websitesPage {
+    padding: 20px 16px;
+  }
+}
+

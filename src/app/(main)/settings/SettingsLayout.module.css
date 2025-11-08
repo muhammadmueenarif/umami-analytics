@@ -1,0 +1,95 @@
+.settingsLayout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tabsContainer {
+  margin-bottom: 24px;
+  border-bottom: none;
+  padding: 0;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.tabs :global(button),
+.tabs :global([role="tab"]) {
+  padding: 10px 20px !important;
+  border-radius: 20px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+
+.tabs :global(button:hover),
+.tabs :global([role="tab"]:hover) {
+  background: rgba(0, 0, 0, 0.04) !important;
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.tabs :global(button[aria-selected="true"]),
+.tabs :global([role="tab"][aria-selected="true"]) {
+  background: rgba(0, 0, 0, 0.08) !important;
+  color: rgba(0, 0, 0, 0.87) !important;
+  font-weight: 600 !important;
+  border-color: transparent !important;
+}
+
+.tabs :global(button[aria-selected="true"]:hover),
+.tabs :global([role="tab"][aria-selected="true"]:hover) {
+  background: rgba(0, 0, 0, 0.12) !important;
+}
+
+.content {
+  flex: 1;
+  padding: 0 20px;
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 768px) {
+  .content {
+    padding: 0 16px;
+  }
+}
+
+/* Dark Theme */
+[data-theme='dark'] .tabsContainer {
+  border-bottom-color: transparent;
+}
+
+[data-theme='dark'] .tabs :global(button),
+[data-theme='dark'] .tabs :global([role="tab"]) {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+[data-theme='dark'] .tabs :global(button:hover),
+[data-theme='dark'] .tabs :global([role="tab"]:hover) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+[data-theme='dark'] .tabs :global(button[aria-selected="true"]),
+[data-theme='dark'] .tabs :global([role="tab"][aria-selected="true"]) {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+[data-theme='dark'] .tabs :global(button[aria-selected="true"]:hover),
+[data-theme='dark'] .tabs :global([role="tab"][aria-selected="true"]:hover) {
+  background: rgba(255, 255, 255, 0.16) !important;
+}
+

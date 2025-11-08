@@ -1,37 +1,98 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-width: 150px;
+  justify-content: space-between;
+  min-width: 140px;
+  background: transparent;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.card:hover {
+  border-color: #999;
 }
 
 .card.compare .change {
-  font-size: 16px;
-  margin: 10px 0;
+  font-size: 14px;
+  margin: 8px 0;
 }
 
-.card:first-child {
-  padding-left: 0;
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.card:last-child {
-  border: 0;
+.icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--primary400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .value {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
   white-space: nowrap;
-  color: var(--base900);
-  line-height: 1.5;
+  color: var(--font-color100);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .value.prev {
-  color: var(--base800);
+  color: var(--font-color200);
+  font-size: 18px;
+  margin-top: 4px;
+  font-weight: 600;
 }
 
 .label {
-  font-weight: 700;
+  font-weight: 600;
   white-space: nowrap;
-  color: var(--base800);
+  color: var(--font-color200);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.change {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Dark Theme */
+[data-theme='dark'] .card {
+  background: transparent;
+  border-color: #555555;
+}
+
+[data-theme='dark'] .card:hover {
+  border-color: #888;
+}
+
+[data-theme='dark'] .icon {
+  background: var(--primary500);
 }

@@ -1,0 +1,30 @@
+.deleteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--base300);
+  border-radius: 8px;
+  background: var(--base75);
+  color: var(--font-color200);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.deleteButton:hover {
+  background: var(--base100);
+  color: var(--font-color100);
+  border-color: var(--base400);
+}
+
+/* Dark Theme */
+[data-theme='dark'] .deleteButton {
+  background: var(--base100);
+  border-color: var(--base200);
+}
+
+[data-theme='dark'] .deleteButton:hover {
+  background: var(--base150);
+  border-color: var(--base300);
+}
+

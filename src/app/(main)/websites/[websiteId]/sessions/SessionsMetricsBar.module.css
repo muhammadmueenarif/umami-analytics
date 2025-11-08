@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.metricsSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.dateFilterSection {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .dateFilterSection {
+    align-self: flex-end;
+  }
+}
+
