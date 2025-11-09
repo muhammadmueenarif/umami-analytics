@@ -8,9 +8,10 @@
   display: flex;
   flex-direction: column;
   z-index: 1000;
-  transition: width 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 0 8px;
 }
 
 .sidebar.collapsed {
@@ -54,17 +55,18 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-  border-radius: 6px;
+  border-radius: 12px;
   color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .collapseButton:hover {
-  background: rgba(0, 0, 0, 0.04);
-  color: rgba(0, 0, 0, 0.87);
+  background: linear-gradient(135deg, rgba(var(--primary400-rgb), 0.12) 0%, rgba(var(--primary400-rgb), 0.08) 100%);
+  color: var(--primary400);
+  transform: scale(1.05);
 }
 
 .collapseButton svg {
@@ -94,11 +96,11 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 20px;
+  gap: 14px;
+  padding: 12px 20px;
   color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 2px 0;
   border-radius: 0 20px 20px 0;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
@@ -110,14 +112,16 @@
 }
 
 .navItem:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.04) 100%);
   color: rgba(0, 0, 0, 0.87);
+  transform: translateX(2px);
 }
 
 .navItem.active {
-  background: rgba(0, 0, 0, 0.08);
-  color: rgba(0, 0, 0, 0.87);
-  font-weight: 500;
+  background: linear-gradient(135deg, rgba(var(--primary400-rgb), 0.12) 0%, rgba(var(--primary400-rgb), 0.08) 100%);
+  color: var(--primary400);
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(var(--primary400-rgb), 0.1);
 }
 
 .navIcon {
@@ -168,11 +172,11 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 20px;
+  gap: 14px;
+  padding: 12px 20px;
   color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 2px 0;
   border-radius: 0 20px 20px 0;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
@@ -184,8 +188,9 @@
 }
 
 .profileLink:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.04) 100%);
   color: rgba(0, 0, 0, 0.87);
+  transform: translateX(2px);
 }
 
 .profileLink svg {
@@ -200,13 +205,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 20px;
+  gap: 14px;
+  padding: 12px 20px;
   background: none;
   border: none;
   color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 2px 0;
   border-radius: 0 20px 20px 0;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
@@ -220,8 +225,9 @@
 }
 
 .logoutButton:hover {
-  background: rgba(0, 0, 0, 0.04);
-  color: rgba(0, 0, 0, 0.87);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0.08) 100%);
+  color: #ef4444;
+  transform: translateX(2px);
 }
 
 .logoutButton svg {
@@ -252,13 +258,13 @@
 }
 
 [data-theme='dark'] .navItem:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.08) 100%);
   color: rgba(255, 255, 255, 0.87) !important;
 }
 
 [data-theme='dark'] .navItem.active {
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.87) !important;
+  background: linear-gradient(135deg, rgba(var(--primary400-rgb), 0.16) 0%, rgba(var(--primary400-rgb), 0.12) 100%);
+  color: var(--primary400) !important;
 }
 
 [data-theme='dark'] .navLabel {
@@ -276,6 +282,7 @@
 }
 
 [data-theme='dark'] .profileLink:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.08) 100%);
   color: rgba(255, 255, 255, 0.87) !important;
 }
 
@@ -289,7 +296,8 @@
 }
 
 [data-theme='dark'] .logoutButton:hover {
-  color: rgba(255, 255, 255, 0.87) !important;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.16) 0%, rgba(239, 68, 68, 0.12) 100%);
+  color: #ef4444 !important;
 }
 
 [data-theme='dark'] .logoutButton svg {
@@ -332,8 +340,8 @@
 }
 
 [data-theme='dark'] .collapseButton:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.87);
+  background: linear-gradient(135deg, rgba(var(--primary400-rgb), 0.16) 0%, rgba(var(--primary400-rgb), 0.12) 100%);
+  color: var(--primary400);
 }
 
 /* Collapsed State */

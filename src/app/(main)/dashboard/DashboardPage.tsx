@@ -6,7 +6,6 @@ import DashboardSettingsButton from '@/app/(main)/dashboard/DashboardSettingsBut
 import DashboardEdit from '@/app/(main)/dashboard/DashboardEdit';
 import EmptyPlaceholder from '@/components/common/EmptyPlaceholder';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
-import SummaryCards from '@/components/dashboard/SummaryCards';
 import { useMessages, useLocale, useTeamUrl, useWebsites } from '@/components/hooks';
 import useDashboard from '@/store/dashboard';
 import LinkButton from '@/components/common/LinkButton';
@@ -34,8 +33,6 @@ export function DashboardPage() {
   return (
     <div className={styles.dashboard}>
       <DashboardHeader />
-      
-      {hasData && !editing && <SummaryCards teamId={teamId} />}
 
       {!hasData && (
         <EmptyPlaceholder message={formatMessage(messages.noWebsitesConfigured)}>

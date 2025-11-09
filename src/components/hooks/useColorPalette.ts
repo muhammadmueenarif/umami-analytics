@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { getItem, setItem } from '@/lib/storage';
 import { COLOR_PALETTE_CONFIG, COLOR_PALETTES, THEME_COLORS } from '@/lib/constants';
+import { hex2RGB } from '@/lib/colors';
 
 export function useColorPalette() {
   const [selectedPalette, setSelectedPalette] = useState<string>('default');
@@ -15,6 +16,13 @@ export function useColorPalette() {
       root.style.setProperty('--custom-primary', defaultPrimary);
       root.style.setProperty('--custom-secondary', '');
       root.style.setProperty('--custom-accent', '');
+      
+      // Set default RGB values
+      const primaryRGB = hex2RGB(defaultPrimary);
+      root.style.setProperty('--primary400-rgb', `${primaryRGB.r}, ${primaryRGB.g}, ${primaryRGB.b}`);
+      
+      // Force a repaint to ensure CSS variables update
+      root.style.setProperty('--shadow-update', Date.now().toString());
       return;
     }
 
@@ -33,6 +41,13 @@ export function useColorPalette() {
     root.style.setProperty('--primary500', palette.secondary || palette.primary);
     root.style.setProperty('--primary600', palette.accent || palette.secondary || palette.primary);
     root.style.setProperty('--primary700', palette.accent || palette.secondary || palette.primary);
+    
+    // Set RGB values for use in rgba() shadows
+    const primaryRGB = hex2RGB(palette.primary);
+    root.style.setProperty('--primary400-rgb', `${primaryRGB.r}, ${primaryRGB.g}, ${primaryRGB.b}`);
+    
+    // Force a repaint to ensure CSS variables update
+    root.style.setProperty('--shadow-update', Date.now().toString());
   }, []);
 
   useEffect(() => {

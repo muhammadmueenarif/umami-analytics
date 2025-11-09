@@ -3,6 +3,7 @@ html body {
   --primary500: var(--custom-secondary, var(--blue900));
   --primary600: var(--custom-accent, var(--blue1000));
   --primary700: var(--custom-accent, var(--blue1100));
+  /* --primary400-rgb is set dynamically by JavaScript based on selected color palette */
 }
 
 [data-theme='dark'] {
@@ -10,4 +11,5 @@ html body {
   --primary500: var(--custom-secondary, var(--blue700));
   --primary600: var(--custom-accent, var(--blue800));
   --primary700: var(--custom-accent, var(--blue900));
+  /* --primary400-rgb is set dynamically by JavaScript based on selected color palette */
 }

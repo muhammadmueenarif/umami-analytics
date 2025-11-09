@@ -105,3 +105,192 @@ main::-webkit-scrollbar-track {
   --dark800: #b4b4b4;
   --dark900: #eeeeee;
 }
+
+/* Global button and input styling for professional appearance */
+button,
+[role="button"],
+[class*="Button"],
+.button {
+  border-radius: 12px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-family: "Google Sans", Roboto, Arial, sans-serif !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Override react-basics field wrappers */
+[class*="Field-field"] {
+  background: var(--base50) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+[class*="Field-field"]:hover {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+[class*="Field-field"]:focus-within {
+  border-color: var(--primary400) !important;
+  box-shadow: 0 0 0 3px rgba(var(--primary400-rgb), 0.08) !important;
+}
+
+/* Remove inner rounded/duplicate borders inside Field wrappers */
+[class*="Field-field"] input,
+[class*="Field-field"] textarea,
+[class*="Field-field"] select,
+[class*="Field-field"] [class*="TextField-input"],
+[class*="Field-field"] [class*="Input"] {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  outline: none !important;
+}
+
+/* Override react-basics input elements */
+input,
+textarea,
+select,
+[class*="TextField-input"],
+[class*="Input"],
+.input {
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-family: "Google Sans", Roboto, Arial, sans-serif !important;
+  background: var(--base50) !important;
+}
+
+input:hover,
+textarea:hover,
+select:hover,
+[class*="TextField-input"]:hover,
+[class*="Input"]:hover,
+.input:hover {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+[class*="TextField-input"]:focus,
+[class*="Input"]:focus,
+.input:focus {
+  outline: none !important;
+  background: var(--base50) !important;
+}
+
+/* Global overrides for react-basics buttons to use dynamic color palette */
+/* Target react-basics Button component with primary variant */
+[class*="Button"][class*="primary"],
+button[class*="primary"],
+button[data-variant="primary"],
+.button[data-variant="primary"],
+[role="button"][data-variant="primary"] {
+  background-color: var(--primary400) !important;
+  border-color: var(--primary400) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(var(--primary400-rgb), 0.25), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+[class*="Button"][class*="primary"]:hover,
+button[class*="primary"]:hover,
+button[data-variant="primary"]:hover,
+.button[data-variant="primary"]:hover,
+[role="button"][data-variant="primary"]:hover {
+  background-color: var(--primary500) !important;
+  border-color: var(--primary500) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(var(--primary400-rgb), 0.3), 0 2px 4px rgba(0, 0, 0, 0.12) !important;
+}
+
+[class*="Button"][class*="primary"]:active,
+button[class*="primary"]:active,
+button[data-variant="primary"]:active,
+.button[data-variant="primary"]:active,
+[role="button"][data-variant="primary"]:active {
+  background-color: var(--primary600) !important;
+  border-color: var(--primary600) !important;
+  transform: translateY(0) !important;
+  box-shadow: 0 1px 4px rgba(var(--primary400-rgb), 0.2), 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Secondary buttons */
+[class*="Button"]:not([class*="primary"]),
+button:not([class*="primary"]):not([data-variant="primary"]),
+button[data-variant="secondary"],
+.button[data-variant="secondary"] {
+  border-radius: 12px !important;
+  background: var(--base75) !important;
+  border: 1px solid var(--base300) !important;
+  color: var(--font-color100) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+[class*="Button"]:not([class*="primary"]):hover,
+button:not([class*="primary"]):not([data-variant="primary"]):hover {
+  background: var(--base100) !important;
+  border-color: var(--primary400) !important;
+  color: var(--primary400) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dark theme adjustments */
+[data-theme='dark'] [class*="Field-field"] {
+  background: var(--base100) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme='dark'] [class*="Field-field"]:hover {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-theme='dark'] [class*="Field-field"]:focus-within {
+  border-color: var(--primary400) !important;
+  box-shadow: 0 0 0 3px rgba(var(--primary400-rgb), 0.12) !important;
+}
+
+/* Dark theme: remove inner rounded/duplicate borders inside Field wrappers */
+[data-theme='dark'] [class*="Field-field"] input,
+[data-theme='dark'] [class*="Field-field"] textarea,
+[data-theme='dark'] [class*="Field-field"] select,
+[data-theme='dark'] [class*="Field-field"] [class*="TextField-input"],
+[data-theme='dark'] [class*="Field-field"] [class*="Input"] {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  outline: none !important;
+}
+
+[data-theme='dark'] input,
+[data-theme='dark'] textarea,
+[data-theme='dark'] select,
+[data-theme='dark'] [class*="TextField-input"],
+[data-theme='dark'] [class*="Input"],
+[data-theme='dark'] .input {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  background: var(--base100) !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+[data-theme='dark'] input:hover,
+[data-theme='dark'] textarea:hover,
+[data-theme='dark'] select:hover,
+[data-theme='dark'] [class*="TextField-input"]:hover,
+[data-theme='dark'] [class*="Input"]:hover,
+[data-theme='dark'] .input:hover {
+  /* border-color: rgba(255, 255, 255, 0.2) !important; */
+}
+
+[data-theme='dark'] input:focus,
+[data-theme='dark'] textarea:focus,
+[data-theme='dark'] select:focus,
+[data-theme='dark'] [class*="TextField-input"]:focus,
+[data-theme='dark'] [class*="Input"]:focus,
+[data-theme='dark'] .input:focus {
+  /* border-color: var(--primary400) !important;
+  background: var(--base100) !important;
+  box-shadow: 0 0 0 3px rgba(var(--primary400-rgb), 0.12) !important; */
+}
