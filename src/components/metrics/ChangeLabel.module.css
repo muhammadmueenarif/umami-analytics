@@ -1,26 +1,35 @@
 .label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 0.1em 0.5em;
-  border-radius: 5px;
-  color: var(--base500);
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
   align-self: flex-start;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  border: 1.5px solid;
+}
+
+.label:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
 }
 
 .positive {
-  color: var(--green700);
-  background: var(--green100);
+  color: var(--custom-primary, var(--primary400));
+  border-color: var(--custom-primary, var(--primary400));
 }
 
 .negative {
-  color: var(--red700);
-  background: var(--red100);
+  color: var(--custom-primary, var(--primary400));
+  border-color: var(--custom-primary, var(--primary400));
+  opacity: 0.7;
 }
 
 .neutral {
-  color: var(--base700);
-  background: var(--base100);
+  color: var(--base500);
+  border-color: var(--base300);
 }

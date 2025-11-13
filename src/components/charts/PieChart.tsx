@@ -1,5 +1,5 @@
 import { ChartProps } from '@/components/charts/Chart';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { StatusLight } from 'react-basics';
 import { formatLongNumber } from '@/lib/format';
 import {
@@ -34,25 +34,11 @@ function convertPieData(data: any) {
 }
 
 export default function PieChart(props: PieChartProps) {
-  const [tooltip, setTooltip] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const { type = 'pie' } = props;
   const { colors } = useTheme();
 
-  const rechartsData = convertPieData(props.data);
-
-  const handleTooltip = (props: any) => {
-    if (props && props.active && props.payload && props.payload.length > 0) {
-      const payload = props.payload[0];
-      setTooltip(
-        <StatusLight color={payload.payload.color || CHART_COLORS[0]}>
-          {formatLongNumber(payload.value)} {payload.name}
-        </StatusLight>
-      );
-    } else {
-      setTooltip(null);
-    }
-  };
+  const rechartsData = useMemo(() => convertPieData(props.data), [props.data]);
 
   if (!rechartsData || rechartsData.length === 0) {
     return null;
@@ -62,6 +48,17 @@ export default function PieChart(props: PieChartProps) {
     <div className={classNames(styles.chart, props.className)}>
       <ResponsiveContainer width="100%" height="100%">
         <RechartsPieChart>
+          <defs>
+            {rechartsData.map((entry: any, index: number) => {
+              const color = entry.color || CHART_COLORS[index % CHART_COLORS.length];
+              return (
+                <radialGradient key={`gradient-${index}`} id={`pieGradient${index}`}>
+                  <stop offset="0%" stopColor={color} stopOpacity={0.95} />
+                  <stop offset="100%" stopColor={color} stopOpacity={0.8} />
+                </radialGradient>
+              );
+            })}
+          </defs>
           <Pie
             data={rechartsData}
             cx="50%"
@@ -69,31 +66,51 @@ export default function PieChart(props: PieChartProps) {
             labelLine={false}
             label={false}
             outerRadius={type === 'doughnut' ? '75%' : '85%'}
-            innerRadius={type === 'doughnut' ? '45%' : 0}
+            innerRadius={type === 'doughnut' ? '48%' : 0}
             fill="#8884d8"
             dataKey="value"
-            animationDuration={500}
+            animationDuration={800}
+            animationEasing="ease-in-out"
             activeIndex={activeIndex}
+            activeShape={{
+              outerRadius: type === 'doughnut' ? '80%' : '90%',
+            }}
             onMouseEnter={(_, index) => setActiveIndex(index)}
             onMouseLeave={() => setActiveIndex(null)}
+            paddingAngle={2}
           >
             {rechartsData.map((entry: any, index: number) => (
               <Cell 
                 key={`cell-${index}`} 
-                fill={entry.color || CHART_COLORS[index % CHART_COLORS.length]}
-                stroke={colors.theme.gray50}
-                strokeWidth={2}
+                fill={`url(#pieGradient${index})`}
+                stroke="var(--base50)"
+                strokeWidth={3}
               />
             ))}
           </Pie>
-          <Tooltip content={handleTooltip} />
+          <Tooltip 
+            content={(props) => {
+              if (props.active && props.payload && props.payload.length > 0) {
+                const payload = props.payload[0];
+                return (
+                  <div style={{
+                    background: 'var(--base50)',
+                    padding: '12px 16px',
+                    border: '1px solid var(--base300)',
+                    borderRadius: '12px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                  }}>
+                    <StatusLight color={payload.payload.color || CHART_COLORS[0]}>
+                      <span style={{ fontWeight: 600 }}>{formatLongNumber(payload.value)}</span> {payload.name}
+                    </StatusLight>
+                  </div>
+                );
+              }
+              return null;
+            }}
+          />
         </RechartsPieChart>
       </ResponsiveContainer>
-      {tooltip && (
-        <div style={{ position: 'absolute', pointerEvents: 'none', opacity: 0 }}>
-          {tooltip}
-        </div>
-      )}
     </div>
   );
 }

@@ -17,31 +17,32 @@ export function WebsiteChart({
   const { pageviews, sessions, compare } = (data || {}) as any;
 
   const chartData = useMemo(() => {
-    if (data) {
-      const result = {
-        pageviews,
-        sessions,
-      };
-
-      if (compare) {
-        result['compare'] = {
-          pageviews: result.pageviews.map(({ x }, i) => ({
-            x,
-            y: compare.pageviews[i]?.y,
-            d: compare.pageviews[i]?.x,
-          })),
-          sessions: result.sessions.map(({ x }, i) => ({
-            x,
-            y: compare.sessions[i]?.y,
-            d: compare.sessions[i]?.x,
-          })),
-        };
-      }
-
-      return result;
+    if (!data || !pageviews || !sessions) {
+      return { pageviews: [], sessions: [] };
     }
-    return { pageviews: [], sessions: [] };
-  }, [data, startDate, endDate, unit]);
+    
+    const result = {
+      pageviews: Array.isArray(pageviews) ? pageviews : [],
+      sessions: Array.isArray(sessions) ? sessions : [],
+    };
+
+    if (compare && Array.isArray(compare.pageviews) && Array.isArray(compare.sessions)) {
+      result['compare'] = {
+        pageviews: result.pageviews.map(({ x }, i) => ({
+          x,
+          y: compare.pageviews[i]?.y || 0,
+          d: compare.pageviews[i]?.x,
+        })),
+        sessions: result.sessions.map(({ x }, i) => ({
+          x,
+          y: compare.sessions[i]?.y || 0,
+          d: compare.sessions[i]?.x,
+        })),
+      };
+    }
+
+    return result;
+  }, [data, pageviews, sessions, compare, startDate, endDate, unit]);
 
   return (
     <div className={styles.chartWrapper}>

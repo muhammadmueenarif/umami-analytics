@@ -34,11 +34,13 @@ export function ChangeLabel({
       title={title}
     >
       {!neutral && (
-        <Icon rotate={positive ? -90 : 90} size={size}>
+        <Icon rotate={positive ? -90 : 90} size="sm">
           <Icons.ArrowRight />
         </Icon>
       )}
-      {children || value}
+      <span style={{ fontWeight: 700, position: 'relative', zIndex: 1 }}>
+        {children || value}
+      </span>
     </div>
   );
 }

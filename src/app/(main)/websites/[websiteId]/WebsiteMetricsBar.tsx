@@ -15,7 +15,7 @@ import styles from './WebsiteMetricsBar.module.css';
 export function WebsiteMetricsBar({
   websiteId,
   sticky,
-  showChange = false,
+  showChange = true,
   compareMode = false,
   showFilter = false,
 }: {
@@ -101,7 +101,7 @@ export function WebsiteMetricsBar({
     >
       <div>
         <MetricsBar isLoading={isLoading} isFetched={isFetched} error={error}>
-          {metrics.map(({ label, value, prev, change, formatValue, reverseColors, icon }) => {
+          {metrics.map(({ label, value, prev, change, formatValue, reverseColors, icon, trendData }) => {
             return (
               <MetricCard
                 key={label}
@@ -114,6 +114,7 @@ export function WebsiteMetricsBar({
                 showChange={!isAllTime && (compareMode || showChange)}
                 showPrevious={!isAllTime && compareMode}
                 icon={icon}
+                trendData={trendData}
               />
             );
           })}

@@ -23,9 +23,12 @@ export default function WebsiteChartList({
   const { dir } = useLocale();
 
   const ordered = useMemo(() => {
+    if (!websites || !Array.isArray(websites)) {
+      return [];
+    }
     return websites
       .filter(website => (websiteActive.length ? websiteActive.includes(website.id) : true))
-      .map(website => ({ ...website, order: websiteOrder.indexOf(website.id) || 0 }))
+      .map(website => ({ ...website, order: websiteOrder.indexOf(website.id) >= 0 ? websiteOrder.indexOf(website.id) : websites.length }))
       .sort(firstBy('order'));
   }, [websites, websiteOrder, websiteActive]);
 

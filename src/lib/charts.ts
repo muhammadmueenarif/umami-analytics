@@ -7,7 +7,21 @@ export function renderNumberLabels(label: string) {
 
 export function renderDateLabels(unit: string, locale: string) {
   return (label: string, index: number, values: any[]) => {
-    const d = new Date(values[index].value);
+    // Handle different data formats - Recharts passes the label directly, Chart.js passes values array
+    let dateValue: string | number | Date;
+    
+    if (values && values[index] && values[index].value !== undefined) {
+      dateValue = values[index].value;
+    } else if (values && values[index] && values[index].name) {
+      dateValue = values[index].name;
+    } else {
+      dateValue = label;
+    }
+    
+    const d = new Date(dateValue);
+    if (isNaN(d.getTime())) {
+      return label; // Return original label if date is invalid
+    }
 
     switch (unit) {
       case 'minute':
