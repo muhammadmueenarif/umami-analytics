@@ -84,6 +84,9 @@ async function checkV1Tables() {
 async function applyMigration() {
   if (!process.env.SKIP_DB_MIGRATION) {
     console.log(execSync('prisma migrate deploy').toString());
+    
+    // Regenerate Prisma Client after migrations to ensure schema is in sync
+    console.log(execSync('prisma generate').toString());
 
     success('Database is up to date.');
   }
