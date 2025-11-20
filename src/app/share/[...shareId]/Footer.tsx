@@ -1,11 +1,11 @@
-import { CURRENT_VERSION, HOMEPAGE_URL } from '@/lib/constants';
+import { CURRENT_VERSION } from '@/lib/constants';
 import styles from './Footer.module.css';
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <a href={HOMEPAGE_URL}>
-        <b>umami</b> {`v${CURRENT_VERSION}`}
+      <a href="/">
+        <b>Hivefinty</b> {CURRENT_VERSION && `v${CURRENT_VERSION}`}
       </a>
     </footer>
   );
