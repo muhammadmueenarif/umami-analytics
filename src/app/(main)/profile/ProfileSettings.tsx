@@ -4,6 +4,7 @@ import DateRangeSetting from '@/app/(main)/profile/DateRangeSetting';
 import LanguageSetting from '@/app/(main)/profile/LanguageSetting';
 import ThemeSetting from '@/app/(main)/profile/ThemeSetting';
 import PasswordChangeButton from './PasswordChangeButton';
+import ApiKeySetting from './ApiKeySetting';
 import { useLogin, useMessages } from '@/components/hooks';
 import { ROLES } from '@/lib/constants';
 
@@ -52,6 +53,9 @@ export function ProfileSettings() {
       </FormRow>
       <FormRow label={formatMessage(labels.theme)}>
         <ThemeSetting />
+      </FormRow>
+      <FormRow label="API Key">
+        <ApiKeySetting />
       </FormRow>
     </Form>
   );

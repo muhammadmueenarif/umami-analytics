@@ -3,11 +3,12 @@ import { Report } from '@prisma/client';
 import redis from '@/lib/redis';
 import debug from 'debug';
 import { PERMISSIONS, ROLE_PERMISSIONS, ROLES, SHARE_TOKEN_HEADER } from '@/lib/constants';
-import { secret, getRandomChars } from '@/lib/crypto';
+import { secret, getRandomChars, hash } from '@/lib/crypto';
 import { createSecureToken, parseSecureToken, parseToken } from '@/lib/jwt';
 import { ensureArray } from '@/lib/utils';
 import { getTeamUser, getUser, getWebsite } from '@/queries';
 import { Auth } from './types';
+import prisma from '@/lib/prisma';
 
 const log = debug('umami:auth');
 const cloudMode = process.env.CLOUD_MODE;
@@ -29,9 +30,32 @@ export async function checkAuth(request: Request) {
   let user = null;
   const { userId, authKey, grant } = payload || {};
 
-  if (userId) {
+  // Check if token is an API key (starts with "hf_")
+  if (token && token.startsWith('hf_')) {
+    const apiKeyHash = hash(token, process.env.APP_SECRET || process.env.DATABASE_URL);
+    
+    // Find user by API key hash
+    const userWithApiKey = await prisma.client.user.findFirst({
+      where: {
+        apiKeyHash,
+        deletedAt: null,
+      },
+      select: {
+        id: true,
+        username: true,
+        role: true,
+        createdAt: true,
+      },
+    });
+
+    if (userWithApiKey) {
+      user = userWithApiKey;
+    }
+  } else if (userId) {
+    // Regular JWT token
     user = await getUser(userId);
   } else if (redis.enabled && authKey) {
+    // Redis-based auth
     const key = await redis.client.get(authKey);
 
     if (key?.userId) {

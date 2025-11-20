@@ -27,6 +27,7 @@ async function findUser(
       username: true,
       password: includePassword,
       role: true,
+      apiKeyHash: true,
       createdAt: true,
     },
   });
@@ -103,6 +104,7 @@ export async function updateUser(userId: string, data: Prisma.UserUpdateInput): 
       id: true,
       username: true,
       role: true,
+      apiKeyHash: true,
       createdAt: true,
     },
   });

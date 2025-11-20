@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.newKeyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--background-secondary);
+  border-radius: 8px;
+  border: 2px solid var(--primary-color);
+}
+
+.warning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--warning-background);
+  color: var(--warning-color);
+  border-radius: 4px;
+}
+
+.keyDisplay {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.keyDisplay input {
+  flex: 1;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.maskedKey {
+  font-family: monospace;
+  color: var(--font-color-secondary);
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
