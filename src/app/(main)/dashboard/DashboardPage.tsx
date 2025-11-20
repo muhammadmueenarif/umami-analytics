@@ -19,12 +19,13 @@ export function DashboardPage() {
   const pageSize = isEdited ? 200 : 10;
 
   const { result, query, params, setParams } = useWebsites({ teamId }, { pageSize });
-  const { page } = params;
+  const page = typeof params.page === 'number' ? params.page : parseInt(String(params.page || 1), 10) || 1;
   const hasData = !!result?.data?.length;
 
   const handlePageChange = (page: number) => {
     setParams({ ...params, page });
   };
+
 
   if (query.isLoading) {
     return <Loading />;
@@ -63,7 +64,7 @@ export function DashboardPage() {
                 <Pager
                   page={page}
                   pageSize={pageSize}
-                  count={Number(result?.count) || 0}
+                  count={Math.max(0, typeof result?.count === 'number' ? result.count : parseInt(String(result?.count || 0), 10) || 0)}
                   onPageChange={handlePageChange}
                 />
               </div>

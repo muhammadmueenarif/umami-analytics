@@ -55,8 +55,12 @@ COPY --from=builder /app/scripts ./scripts
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Custom routes
-RUN mv ./.next/routes-manifest.json ./.next/routes-manifest-orig.json
+# Custom routes - move original if it exists, otherwise create a placeholder
+RUN if [ -f ./.next/routes-manifest.json ]; then \
+      mv ./.next/routes-manifest.json ./.next/routes-manifest-orig.json; \
+    else \
+      echo '{"basePath":"","headers":[],"rewrites":[]}' > ./.next/routes-manifest-orig.json; \
+    fi
 
 USER nextjs
 

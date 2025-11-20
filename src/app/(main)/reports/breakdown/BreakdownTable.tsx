@@ -19,8 +19,27 @@ export default function BreakdownTable() {
     return <Loading icon="dots" />;
   }
 
+  // Transform data to include computed columns
+  const transformedData = data.map((row: any) => ({
+    ...row,
+    visitors: row?.visitors?.toLocaleString() || '0',
+    visits: row?.visits?.toLocaleString() || '0',
+    views: row?.views?.toLocaleString() || '0',
+    bounceRate: row?.visits
+      ? `${Math.round((Math.min(row.visits, row.bounces || 0) / row.visits) * 100)}%`
+      : '0%',
+    visitDuration:
+      row?.visits && row?.totaltime
+        ? `${row.totaltime / row.visits < 0 ? '-' : ''}${formatShortTime(
+            Math.abs(Math.floor(row.totaltime / row.visits)),
+            ['m', 's'],
+            ' ',
+          )}`
+        : '0s',
+  }));
+
   return (
-    <GridTable data={data}>
+    <GridTable data={transformedData}>
       {selectedFields.map((fieldName: string) => {
         const field = fields.find((f: any) => f.name === fieldName);
         return (
@@ -31,39 +50,11 @@ export default function BreakdownTable() {
           />
         );
       })}
-      <GridColumn
-        name="visitors"
-        label={formatMessage(labels.visitors)}
-        render={(row: any) => row?.visitors?.toLocaleString() || 0}
-      />
-      <GridColumn
-        name="visits"
-        label={formatMessage(labels.visits)}
-        render={(row: any) => row?.visits?.toLocaleString() || 0}
-      />
-      <GridColumn
-        name="views"
-        label={formatMessage(labels.views)}
-        render={(row: any) => row?.views?.toLocaleString() || 0}
-      />
-      <GridColumn
-        name="bounceRate"
-        label={formatMessage(labels.bounceRate)}
-        render={(row: any) => {
-          if (!row?.visits) return '0%';
-          const rate = (Math.min(row.visits, row.bounces || 0) / row.visits) * 100;
-          return `${Math.round(rate)}%`;
-        }}
-      />
-      <GridColumn
-        name="visitDuration"
-        label={formatMessage(labels.visitDuration)}
-        render={(row: any) => {
-          if (!row?.visits || !row?.totaltime) return '0s';
-          const duration = row.totaltime / row.visits;
-          return `${duration < 0 ? '-' : ''}${formatShortTime(Math.abs(Math.floor(duration)), ['m', 's'], ' ')}`;
-        }}
-      />
+      <GridColumn name="visitors" label={formatMessage(labels.visitors)} />
+      <GridColumn name="visits" label={formatMessage(labels.visits)} />
+      <GridColumn name="views" label={formatMessage(labels.views)} />
+      <GridColumn name="bounceRate" label={formatMessage(labels.bounceRate)} />
+      <GridColumn name="visitDuration" label={formatMessage(labels.visitDuration)} />
     </GridTable>
   );
 }

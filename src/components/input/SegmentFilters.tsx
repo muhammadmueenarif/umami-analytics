@@ -1,4 +1,5 @@
-import { Icon, Icons, Loading } from 'react-basics';
+import { Icon, Loading } from 'react-basics';
+import Icons from '@/components/icons';
 import { useWebsiteSegments } from '@/components/hooks';
 import Empty from '@/components/common/Empty';
 import styles from './SegmentFilters.module.css';
@@ -26,9 +27,9 @@ export function SegmentFilters({
     return <Loading icon="spinner" />;
   }
 
-  const segments = data || [];
+  const segments = Array.isArray(data) ? data : (data as any)?.data || [];
 
-  if (segments.length === 0) {
+  if (!Array.isArray(segments) || segments.length === 0) {
     return <Empty />;
   }
 
@@ -36,7 +37,7 @@ export function SegmentFilters({
     <div className={styles.list}>
       {segments.map((item: any) => {
         const isSelected = item.id === segmentId;
-        const IconComponent = type === 'segment' ? Icons.PieChart : Icons.UserPlus;
+        const IconComponent = type === 'segment' ? Icons.BarChart : Icons.Users;
         return (
           <div
             key={item.id}
