@@ -42,7 +42,7 @@ export default function EventsPage({ websiteId }) {
           />
         </GridRow>
         <div>
-          <Tabs selectedKey={tab} onSelect={onSelect} style={{ marginBottom: 30 }}>
+          <Tabs selectedKey={tab} onSelect={(key: any) => onSelect(key as 'activity' | 'properties')} style={{ marginBottom: 30 }}>
             <Item key="activity">{formatMessage(labels.activity)}</Item>
             <Item key="properties">{formatMessage(labels.properties)}</Item>
           </Tabs>

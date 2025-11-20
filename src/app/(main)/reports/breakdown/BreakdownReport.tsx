@@ -4,22 +4,18 @@ import ReportMenu from '../[reportId]/ReportMenu';
 import ReportBody from '../[reportId]/ReportBody';
 import BreakdownParameters from './BreakdownParameters';
 import BreakdownTable from './BreakdownTable';
+import { LayoutGrid } from 'lucide-react';
+import { REPORT_TYPES } from '@/lib/constants';
 
-const defaultConfig = {
-  type: 'breakdown',
-  name: '',
-  description: '',
-  parameters: {
-    websiteId: '',
-    dateRange: {},
-    fields: ['path'],
-  },
+const defaultParameters = {
+  type: REPORT_TYPES.breakdown,
+  parameters: { fields: ['path'] },
 };
 
-export default function BreakdownReport() {
+export default function BreakdownReport({ reportId }: { reportId?: string }) {
   return (
-    <Report defaultConfig={defaultConfig}>
-      <ReportHeader />
+    <Report reportId={reportId} defaultParameters={defaultParameters}>
+      <ReportHeader icon={<LayoutGrid size={24} />} />
       <ReportMenu>
         <BreakdownParameters />
       </ReportMenu>

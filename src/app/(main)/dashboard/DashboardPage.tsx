@@ -63,7 +63,7 @@ export function DashboardPage() {
                 <Pager
                   page={page}
                   pageSize={pageSize}
-                  count={result?.count}
+                  count={Number(result?.count) || 0}
                   onPageChange={handlePageChange}
                 />
               </div>
