@@ -12,21 +12,23 @@ export function WebsiteData({ websiteId, onSave }: { websiteId: string; onSave?:
   const { touch } = useModified();
   const { teamId, renderTeamUrl } = useTeamUrl();
   const router = useRouter();
-  const { result } = useTeams(user.id);
+  const { result } = useTeams(user?.id);
+  const teams = result?.data || [];
+
   const canTransferWebsite =
-    (
+    (!!user &&
       !teamId &&
-      result.data.filter(({ teamUser }) =>
-        teamUser.find(
+      teams.some(({ teamUser }) =>
+        teamUser?.some(
           ({ role, userId }) =>
             [ROLES.teamOwner, ROLES.teamManager].includes(role) && userId === user.id,
         ),
-      )
-    ).length > 0 ||
-    (teamId &&
-      !!result?.data
-        ?.find(({ id }) => id === teamId)
-        ?.teamUser.find(({ role, userId }) => role === ROLES.teamOwner && userId === user.id));
+      )) ||
+    (!!user &&
+      !!teamId &&
+      !!teams
+        .find(({ id }) => id === teamId)
+        ?.teamUser?.some(({ role, userId }) => role === ROLES.teamOwner && userId === user.id));
 
   const handleSave = () => {
     touch('websites');

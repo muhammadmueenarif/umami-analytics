@@ -64,6 +64,7 @@ export const FILTER_GROUPS = {
 
 export const FILTER_COLUMNS = {
   url: 'url_path',
+  path: 'url_path',
   entry: 'url_path',
   exit: 'url_path',
   referrer: 'referrer_domain',

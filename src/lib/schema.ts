@@ -4,6 +4,7 @@ import { UNIT_TYPES } from './constants';
 
 export const filterParams = {
   url: z.string().optional(),
+  path: z.string().optional(),
   referrer: z.string().optional(),
   title: z.string().optional(),
   query: z.string().optional(),

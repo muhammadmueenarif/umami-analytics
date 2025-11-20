@@ -7,6 +7,7 @@ export function useFields() {
     // { name: 'cohort', type: 'string', label: formatMessage(labels.cohort) },
     // { name: 'segment', type: 'string', label: formatMessage(labels.segment) },
     { name: 'url', type: 'string', label: formatMessage(labels.url) },
+    { name: 'path', type: 'string', label: formatMessage(labels.path) },
     { name: 'title', type: 'string', label: formatMessage(labels.pageTitle) },
     { name: 'referrer', type: 'string', label: formatMessage(labels.referrer) },
     { name: 'query', type: 'string', label: formatMessage(labels.query) },
@@ -18,6 +19,7 @@ export function useFields() {
     { name: 'city', type: 'string', label: formatMessage(labels.city) },
     { name: 'host', type: 'string', label: formatMessage(labels.host) },
     { name: 'tag', type: 'string', label: formatMessage(labels.tag) },
+    { name: 'event', type: 'string', label: formatMessage(labels.event) },
   ];
 
   return { fields };
