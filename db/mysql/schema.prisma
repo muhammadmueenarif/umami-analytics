@@ -15,6 +15,7 @@ model User {
   role        String    @map("role") @db.VarChar(50)
   logoUrl     String?   @map("logo_url") @db.VarChar(2183)
   displayName String?   @map("display_name") @db.VarChar(255)
+  apiKeyHash  String?   @map("api_key_hash") @db.VarChar(255)
   createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamp(0)
   updatedAt   DateTime? @updatedAt @map("updated_at") @db.Timestamp(0)
   deletedAt   DateTime? @map("deleted_at") @db.Timestamp(0)
