@@ -57,6 +57,7 @@ export const urlOrPathParam = z.string().refine(
 export const reportTypeParam = z.enum([
   'funnel',
   'insights',
+  'breakdown',
   'retention',
   'utm',
   'goals',

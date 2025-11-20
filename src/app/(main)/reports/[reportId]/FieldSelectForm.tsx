@@ -16,10 +16,16 @@ export default function FieldSelectForm({
 }: FieldSelectFormProps) {
   const { formatMessage, labels } = useMessages();
 
+  const handleSelect = (key: any) => {
+    if (onSelect && fields[key as any]) {
+      onSelect(fields[key as any]);
+    }
+  };
+
   return (
     <Form>
       <FormRow label={formatMessage(labels.fields)}>
-        <Menu className={styles.menu} onSelect={key => onSelect(fields[key as any])}>
+        <Menu className={styles.menu} onSelect={handleSelect}>
           {fields.map(({ name, label, type }: any, index: Key) => {
             return (
               <Item key={index} className={styles.item}>

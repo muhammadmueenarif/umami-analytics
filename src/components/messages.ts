@@ -5,6 +5,7 @@ export const labels = defineMessages({
   unknown: { id: 'label.unknown', defaultMessage: 'Unknown' },
   required: { id: 'label.required', defaultMessage: 'Required' },
   save: { id: 'label.save', defaultMessage: 'Save' },
+  apply: { id: 'label.apply', defaultMessage: 'Apply' },
   cancel: { id: 'label.cancel', defaultMessage: 'Cancel' },
   continue: { id: 'label.continue', defaultMessage: 'Continue' },
   delete: { id: 'label.delete', defaultMessage: 'Delete' },
@@ -215,6 +216,10 @@ export const labels = defineMessages({
   insightsDescription: {
     id: 'label.insights-description',
     defaultMessage: 'Dive deeper into your data by using segments and filters.',
+  },
+  breakdownDescription: {
+    id: 'label.breakdown-description',
+    defaultMessage: 'Break down and compare your website data across multiple dimensions.',
   },
   retention: { id: 'label.retention', defaultMessage: 'Retention' },
   retentionDescription: {

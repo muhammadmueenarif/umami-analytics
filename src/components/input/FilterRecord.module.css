@@ -1,0 +1,161 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--base50);
+  border-radius: 10px;
+  border: 1px solid var(--base200);
+  transition: all 0.2s ease;
+}
+
+.container:hover {
+  border-color: var(--base300);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--base600);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: start;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 12px;
+}
+
+.dropdown {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+}
+
+.selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--base100);
+  border: 1px solid var(--base300);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.selected:hover {
+  background: var(--base200);
+  border-color: var(--base400);
+}
+
+.selected span {
+  flex: 1;
+  font-size: 14px;
+  color: var(--base800);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search {
+  position: relative;
+  width: 100%;
+}
+
+.searchField {
+  width: 100%;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  background: var(--base50);
+  border: 1px solid var(--base200);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.removeButton {
+  padding: 8px;
+  color: var(--red500);
+  transition: all 0.2s ease;
+}
+
+.removeButton:hover {
+  background: var(--red100);
+  transform: scale(1.05);
+}
+
+/* Dark theme */
+:global(.dark) .container {
+  background: var(--base800);
+  border-color: var(--base700);
+}
+
+:global(.dark) .container:hover {
+  border-color: var(--base600);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .label {
+  color: var(--base400);
+}
+
+:global(.dark) .selected {
+  background: var(--base900);
+  border-color: var(--base600);
+}
+
+:global(.dark) .selected:hover {
+  background: var(--base700);
+  border-color: var(--base500);
+}
+
+:global(.dark) .selected span {
+  color: var(--base200);
+}
+
+:global(.dark) .menu {
+  background: var(--base900);
+  border-color: var(--base700);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+:global(.dark) .removeButton:hover {
+  background: rgba(var(--red500-rgb), 0.2);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .removeButton {
+    justify-self: end;
+  }
+}
+

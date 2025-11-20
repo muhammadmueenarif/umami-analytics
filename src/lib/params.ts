@@ -44,3 +44,20 @@ export function filtersToArray(filters: QueryFilters = {}, options: QueryOptions
     });
   }, []);
 }
+
+export function filtersArrayToObject(filters: any[]) {
+  if (!Array.isArray(filters)) {
+    return {};
+  }
+
+  return filters.reduce((obj, filter) => {
+    const { name, operator, value } = filter;
+
+    if (name && operator && value) {
+      // Format as operator.value (e.g., eq.pathname, contains.test)
+      obj[name] = `${operator}.${value}`;
+    }
+
+    return obj;
+  }, {});
+}

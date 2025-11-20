@@ -135,6 +135,7 @@ export const REPORT_TYPES = {
   funnel: 'funnel',
   goals: 'goals',
   insights: 'insights',
+  breakdown: 'breakdown',
   retention: 'retention',
   utm: 'utm',
   journey: 'journey',

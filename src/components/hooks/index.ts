@@ -26,6 +26,8 @@ export * from './queries/useWebsiteEvents';
 export * from './queries/useWebsiteEventsSeries';
 export * from './queries/useWebsiteMetrics';
 export * from './queries/useWebsiteValues';
+export * from './queries/useWebsiteSegments';
+export * from './queries/useWebsiteSegment';
 export * from './useApi';
 export * from './useCountryNames';
 export * from './useDateRange';

@@ -1,9 +1,16 @@
 .form {
   background: var(--base50);
-  min-width: 300px;
-  padding: 20px;
-  border: 1px solid var(--base400);
-  border-radius: var(--border-radius);
-  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+  min-width: 800px;
+  max-width: 90vw;
+  padding: 0;
+  border: 1px solid var(--base200);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  overflow: hidden;
+}
+
+:global(.dark) .form {
+  background: var(--base900);
+  border-color: var(--base800);
 }

@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  z-index: 100;
+  z-index: 40;
   transition: left 0.3s ease;
   gap: 24px;
 }
@@ -87,7 +87,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   min-width: 240px;
-  z-index: 1000;
+  z-index: 100;
   overflow: hidden;
 }
 

@@ -1,8 +1,6 @@
-import { Button, Icon, Icons, Popup, PopupTrigger, Text } from 'react-basics';
-import PopupForm from '@/app/(main)/reports/[reportId]/PopupForm';
-import FilterSelectForm from '@/app/(main)/reports/[reportId]/FilterSelectForm';
-import { useFields, useMessages, useNavigation, useDateRange } from '@/components/hooks';
-import { OPERATOR_PREFIXES } from '@/lib/constants';
+import { Button, Icon, Icons, Modal, ModalTrigger, Text } from 'react-basics';
+import { FilterEditForm } from '@/components/input/FilterEditForm';
+import { useMessages } from '@/components/hooks';
 import styles from './WebsiteFilterButton.module.css';
 
 export function WebsiteFilterButton({
@@ -19,45 +17,21 @@ export function WebsiteFilterButton({
   showText?: boolean;
 }) {
   const { formatMessage, labels } = useMessages();
-  const { renderUrl, router } = useNavigation();
-  const { fields } = useFields();
-  const {
-    dateRange: { startDate, endDate },
-  } = useDateRange(websiteId);
-
-  const handleAddFilter = ({ name, operator, value }) => {
-    const prefix = OPERATOR_PREFIXES[operator];
-
-    router.push(renderUrl({ [name]: prefix + value }));
-  };
 
   return (
-    <PopupTrigger className={className}>
+    <ModalTrigger className={className}>
       <Button className={styles.button} variant="quiet">
         <Icon>
           <Icons.Plus />
         </Icon>
         {showText && <Text>{formatMessage(labels.filter)}</Text>}
       </Button>
-      <Popup position={position} alignment={alignment}>
+      <Modal title={formatMessage(labels.filter)}>
         {(close: () => void) => {
-          return (
-            <PopupForm>
-              <FilterSelectForm
-                websiteId={websiteId}
-                fields={fields}
-                startDate={startDate}
-                endDate={endDate}
-                onChange={value => {
-                  handleAddFilter(value);
-                  close();
-                }}
-              />
-            </PopupForm>
-          );
+          return <FilterEditForm websiteId={websiteId} onClose={close} />;
         }}
-      </Popup>
-    </PopupTrigger>
+      </Modal>
+    </ModalTrigger>
   );
 }
 

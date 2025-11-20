@@ -1,4 +1,4 @@
-import { Lightbulb, Funnel, Link2, Tag, Target, Infinity, Coins, Sparkles, Plus } from 'lucide-react';
+import { Lightbulb, Funnel, Link2, Tag, Target, Infinity, Coins, Sparkles, Plus, LayoutGrid } from 'lucide-react';
 import { useMessages, useTeamUrl } from '@/components/hooks';
 import PageHeader from '@/components/layout/PageHeader';
 import Link from 'next/link';
@@ -15,6 +15,12 @@ export function ReportTemplates({ showHeader = true }: { showHeader?: boolean })
       description: formatMessage(labels.insightsDescription),
       url: renderTeamUrl('/reports/insights'),
       icon: <Lightbulb size={24} />,
+    },
+    {
+      title: formatMessage(labels.breakdown),
+      description: formatMessage(labels.breakdownDescription),
+      url: renderTeamUrl('/reports/breakdown'),
+      icon: <LayoutGrid size={24} />,
     },
     {
       title: formatMessage(labels.funnel),

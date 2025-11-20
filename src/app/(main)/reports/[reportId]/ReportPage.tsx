@@ -4,6 +4,7 @@ import EventDataReport from '../event-data/EventDataReport';
 import FunnelReport from '../funnel/FunnelReport';
 import GoalReport from '../goals/GoalsReport';
 import InsightsReport from '../insights/InsightsReport';
+import BreakdownReport from '../breakdown/BreakdownReport';
 import JourneyReport from '../journey/JourneyReport';
 import RetentionReport from '../retention/RetentionReport';
 import RevenueReport from '../revenue/RevenueReport';
@@ -14,6 +15,7 @@ const reports = {
   funnel: FunnelReport,
   'event-data': EventDataReport,
   insights: InsightsReport,
+  breakdown: BreakdownReport,
   retention: RetentionReport,
   utm: UTMReport,
   goals: GoalReport,
